@@ -24,6 +24,11 @@ return Application::configure(basePath: dirname(__DIR__))
             if ($request->is('organization/*')) {
                 return route('organization.login');
             }
+
+            if ($request->is('admin/*')) {
+                return route('admin.login');
+            }
+
             return route('login');
         });
     })
