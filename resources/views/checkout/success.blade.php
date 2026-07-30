@@ -1,11 +1,36 @@
 @extends('layouts.app')
 @section('title', 'Pembayaran Berhasil')
+
+@push('styles')
+<style>
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+        #ticket-section, #ticket-section * {
+            visibility: visible;
+        }
+        #ticket-section {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            margin: 0;
+            padding: 16px;
+        }
+        nav, footer, .no-print {
+            display: none !important;
+        }
+    }
+</style>
+@endpush
+
 @section('content')
 <div class="block w-full bg-slate-50 py-12 px-4">
     
     <div class="w-full max-w-xl mx-auto space-y-6">
 
-        <div class="text-center mb-6">
+        <div class="text-center mb-6 no-print">
             <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 border-4 border-white shadow-md">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
@@ -15,7 +40,7 @@
             <p class="text-slate-500 text-sm mt-1">Tiket Anda telah terbit dan siap digunakan.</p>
         </div>
 
-        <div class="bg-white text-slate-900 rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-100 relative">
+        <div id="ticket-section" class="bg-white text-slate-900 rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-100 relative">
             
             <div class="p-8 bg-indigo-50 border-b-4 border-dashed border-indigo-100 text-center relative">
                 <p class="text-indigo-600 font-bold uppercase tracking-widest text-xs mb-2">E-Ticket Resmi</p>
@@ -59,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="px-8 pb-8">
+            <div class="px-8 pb-8 no-print">
                 <button onclick="window.print()"
                     class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg hover:bg-indigo-700 transition">
                     Cetak / Simpan PDF

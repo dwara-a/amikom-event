@@ -18,6 +18,7 @@
             backdrop-filter: blur(10px);
         }
     </style>
+    @stack('styles')
 </head>
 
 <body class="bg-slate-50 text-slate-900">
@@ -32,15 +33,42 @@
             <span class="text-xl font-bold tracking-tight">AmikomEventHub</span>
         </div>
         <div class="hidden md:flex gap-8 font-medium">
-            <a href="#" class="text-indigo-600">Jelajahi</a>
+            <a href="{{ route('home') }}" class="text-indigo-600">Jelajahi</a>
             <a href="#" class="hover:text-indigo-600 transition">Kategori</a>
             <a href="#" class="hover:text-indigo-600 transition">Tentang Kami</a>
         </div>
-        <!-- <div class="flex gap-3">
-            <button class="px-5 py-2.5 rounded-xl font-semibold hover:bg-slate-200 transition">Login</button>
+        <div class="flex items-center gap-3">
+
+    @auth
+
+        <span class="font-semibold text-slate-700">
+            Halo, {{ Auth::user()->name }}
+        </span>
+
+        <a href="{{ route('customer.dashboard') }}"
+            class="px-5 py-2 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition">
+            Dashboard
+        </a>
+
+        <form action="{{ route('customer.logout') }}" method="POST">
+            @csrf
             <button
-                class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-semibold shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition">Daftar</button>
-        </div> -->
+                type="submit"
+                class="px-5 py-2 border border-red-500 text-red-500 rounded-xl font-semibold hover:bg-red-500 hover:text-white transition">
+                Logout
+            </button>
+        </form>
+
+    @else
+
+        <a href="{{ route('login') }}"
+            class="px-5 py-2 rounded-xl font-semibold hover:bg-slate-200 transition">
+            Login
+        </a>
+
+    @endauth
+
+</div>
     </nav>
 
     @yield('content')
