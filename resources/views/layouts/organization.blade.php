@@ -129,37 +129,6 @@
 
             </a>
 
-            {{-- Profil --}}
-            <a href="{{ route('organization.profile') }}"
-               class="flex items-center gap-3 px-4 py-3 rounded-xl
-               {{ request()->routeIs('organization.profile')
-                    ? 'bg-indigo-600 text-white'
-                    : 'hover:bg-slate-800' }}">
-
-                <svg class="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-
-                    <path stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-
-                        d="M5.121
-                        17.804A9 9 0
-                        1118.879 17.804
-                        M15 11a3 3 0
-                        11-6 0 3 3 0
-                        016 0z">
-
-                    </path>
-
-                </svg>
-
-                Profil
-
-            </a>
-
         </nav>
 
         {{-- Logout --}}
